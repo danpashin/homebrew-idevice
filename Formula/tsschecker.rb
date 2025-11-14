@@ -5,7 +5,7 @@ class Tsschecker < Formula
     revision: "75f5c11420946c9d2b6ce3bacb35f0b7beddc84a"
   version "431"
   license "LGPL-3.0-or-later"
-  head "https://github.com/1Conan/tsschecker.git", branch: "master"
+  head "https://github.com/1Conan/tsschecker.git", branch: "main"
 
   livecheck do
     url :homepage
@@ -28,6 +28,7 @@ class Tsschecker < Formula
 
   depends_on "libfragmentzip"
   depends_on "libplist"
+  depends_on "stek29/idevice/libtatsu"
   depends_on "stek29/idevice/libirecovery"
 
   def fix_tihmstar
@@ -39,6 +40,7 @@ class Tsschecker < Formula
   def install
     fix_tihmstar
 
+    ENV["libplist_LIBS"] = "#{Formula["libplist"].lib}/libplist-2.0.a"
     system "./autogen.sh", *std_configure_args
     system "make"
 
