@@ -65,8 +65,7 @@ class Libipatcher < Formula
     File.symlink "LICENSE", "COPYING"
     inreplace %w[configure.ac],
       "git rev-list --count HEAD",
-      "echo #{version.to_s.gsub(/[^\d]/, "")}",
-      false
+      "echo #{version.to_s.gsub(/[^\d]/, "")}"
   end
 
   def install

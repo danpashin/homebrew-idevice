@@ -33,8 +33,7 @@ class Tsschecker < Formula
   def fix_tihmstar
     inreplace %w[configure.ac],
       "git rev-list --count HEAD",
-      "echo #{version.to_s.gsub(/[^\d]/, "")}",
-      false
+      "echo #{version.to_s.gsub(/[^\d]/, "")}"
   end
 
   def install
