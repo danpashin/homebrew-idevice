@@ -40,6 +40,10 @@ class Tsschecker < Formula
   def install
     fix_tihmstar
 
+    inreplace %w[tsschecker/tsschecker.c],
+      "https://api.ipsw.me/v2.1/ota.json/condensed",
+      "https://api.ipsw.me/v2.1/ota.json"
+
     ENV["libplist_LIBS"] = "#{Formula["libplist"].lib}/libplist-2.0.a"
     system "./autogen.sh", *std_configure_args
     system "make"
